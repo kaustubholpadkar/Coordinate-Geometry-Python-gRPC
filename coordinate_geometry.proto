@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package coordinate_geometry;
+
+// Interface exported by the server
+// Services for coordinate geometry system
+service CoordinateGeometryService {
+
+  // A Simple RPC
+  //
+  // Obtains the Magnitude of a given point
+  // Magnitude can also be defined as distance of given point
+  // from the origin
+  rpc Magnitude (Point) returns (Distance) { };
+
+  rpc CartesianDistance (LineSegment) returns (Distance) { };
+}
+
+// Point comprises X and Y coordinates
+message Point {
+  // X coordinate of the point
+  float x = 1;
+
+  // Y coordinate of the point
+  float y = 2;
+}
+
+message LineSegment {
+  // First end-point of line-segment
+  Point point1 = 1;
+
+  // Second end-point of line-segment
+  Point point2 = 2;
+}
+
+// Distance between two Points
+message Distance {
+  float distance = 1;
+}
